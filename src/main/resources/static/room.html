@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Room | Watch Together</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="controls">
+        <div><strong>Room:</strong> <span id="roomBadge" class="badge"></span></div>
+        <div><strong>You:</strong> <span id="meName" class="badge"></span></div>
+        <button id="inviteBtn" class="secondary">Copy Invite Link</button>
+      </div>
+
+      <video id="video" controls playsinline></video>
+
+      <div class="grid two" style="margin-top:16px;">
+        <div>
+          <h3>Upload a video</h3>
+          <input type="file" id="fileInput" accept="video/mp4,video/webm,video/ogg" />
+          <button id="uploadBtn">Upload</button>
+          <p class="small">Current file: <span id="currentFile">None</span></p>
+        </div>
+        <div>
+          <h3>Screen share (beta)</h3>
+          <div class="controls">
+            <button id="startShare">Start Screen Share</button>
+            <button id="stopShare" class="secondary">Stop</button>
+          </div>
+          <p class="small">During share, the video player shows the sharer's screen.</p>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px;">
+        <div>
+          <h3>Members</h3>
+          <div id="members"></div>
+        </div>
+        <div>
+          <h3>Chat</h3>
+          <div id="chatLog" style="height:150px; overflow:auto; background:#0e141d; padding:8px; border-radius:8px;"></div>
+          <div class="controls" style="margin-top:8px;">
+            <input id="chatInput" placeholder="Say hi…" style="flex:1;" />
+            <button id="sendChat">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/room.js"></script>
+</body>
+</html>
