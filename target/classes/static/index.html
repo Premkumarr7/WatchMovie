@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watch Together</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🎬 Watch Together</h1>
+      <p class="small">Create a room, invite friends, upload a video (MP4/WebM/Ogg) <em>you own the rights to</em>, and play in sync. Or share your screen.</p>
+
+      <div class="grid two">
+        <div>
+          <h3>Create a new room</h3>
+          <button id="createBtn">+ Create Room</button>
+          <p class="small" id="createResult"></p>
+        </div>
+        <div>
+          <h3>Join an existing room</h3>
+          <label>Room ID</label>
+          <input id="roomId" placeholder="e.g. 1a2b3c4d" />
+          <br/><br/>
+          <button onclick="joinRoom()">Join</button>
+        </div>
+      </div>
+      <div class="footer">Tip: Send the room link to friends. Everyone sees play/pause/seek together.</div>
+    </div>
+  </div>
+  <script>
+    async function createRoom() {
+      const res = await fetch('/api/rooms', { method:'POST' });
+      const data = await res.json();
+      document.getElementById('createResult').innerHTML = 'Room created: <span class="badge">'+data.roomId+'</span> — <a class="link" href="'+data.joinUrl+'">open room</a>';
+    }
+    document.getElementById('createBtn').addEventListener('click', createRoom);
+    function joinRoom() {
+      const id = document.getElementById('roomId').value.trim();
+      if (!id) { alert('Enter Room ID'); return; }
+      location.href = '/room.html?roomId=' + encodeURIComponent(id);
+    }
+  </script>
+</body>
+</html>

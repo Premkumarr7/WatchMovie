@@ -1,0 +1,7 @@
+com\example\WatchMovie\ServerPortCustomizer.class
+com\example\WatchMovie\Room.class
+com\example\WatchMovie\MediaController.class
+com\example\WatchMovie\RoomController.class
+com\example\WatchMovie\RoomWebSocketHandler.class
+com\example\WatchMovie\WatchTogetherApplication.class
+com\example\WatchMovie\WebSocketConfig.class
